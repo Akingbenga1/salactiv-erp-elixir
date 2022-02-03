@@ -1,13 +1,5 @@
-<div class="d-flex login-container ml-auto mr-0 mr-md-9 p-4 p-md-0" style="max-width: 1000px; min-height: 100vh;">
-        <div class="align-items-center d-flex flex-column justify-content-center m-auto wp_form" style="max-width: 450px;">
-            <div class="container login_form_container p-0">
-                <div class="login_form_bg p-4 pb-5 pt-5">
-                    <div class="mt-5 mb-5 text-center">
-                        <img src="/img/brand/salactiv-logo-white.png" alt="" class="w-75">
-                    </div>
-
-
-<form class="login_form needs-validation" method="POST" action="http://wallpost.test/login" id="login_form"><input type="hidden" name="_token" value="PJxgHq9K5M8B1IqgcZU8urAT5D5UV9nE7BQNZv00">
+<form class="login_form needs-validation" method="POST" action={Routes.page_path(@conn, :signin)} id="login_form"><input type="hidden" name="_token" value="PJxgHq9K5M8B1IqgcZU8urAT5D5UV9nE7BQNZv00">
+    <input type="hidden" name="_csrf_token" value={@form_csrt_token} />
 <fieldset class="">
     <div class="col-12 mb-4 pb-2">
         <div class="input-group shadow-none">
@@ -17,7 +9,7 @@
                 </div>
             </div>
             <input class="border-2 font-we font-weight-600 form-control form-control-lg pl-5 rounded-pill shadow-down-05 text-body text-primary" type="email" name="email" id="email_input" placeholder="Email" maxlength="191" required="">
-            <div class="invalid-feedback ml-4 mb--4 text-capitalize text-pink">inccorrect email!</div>
+            <div class="invalid-feedback ml-4 mb--4 text-capitalize text-pink">incorrect email!</div>
         </div>
     </div>
     <div class="col-12 mb-4 pb-2">
@@ -40,12 +32,7 @@
 
 <a href="https://www.smartmanagement-its.com/" target="blank" class="align-items-center d-flex justify-content-center mt-5 text-nowrap text-reset w-100">
     Powered by
-    <!-- <div class="d-inline-block ml-2"> --><img src="/img/smit-logo-mix-brand.png" alt="" width="100px" class="ml-2">
-    <!-- </div> -->
+    <img src={Routes.static_path(@conn, "/assets/img/smit-logo-mix-brand.png")} alt="" width="100px" class="ml-2">
 </a>
 
 
-                </div>
-            </div>
-        </div>
-    </div>
