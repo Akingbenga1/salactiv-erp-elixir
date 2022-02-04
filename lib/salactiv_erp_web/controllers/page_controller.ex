@@ -5,6 +5,10 @@ defmodule SalactivErpWeb.PageController do
   alias SalactivErp.Accounts
   alias SalactivErpWeb.UserAuth
 
+  plug SalactivErpWeb.Plugs.RequireAuth when action in [:dashboard]
+
+  plug SalactivErpWeb.Plugs.NotRequireAuth when action in [:login]
+
   def index(conn, _params) do
     render(conn, "index.html")
   end
@@ -32,14 +36,27 @@ defmodule SalactivErpWeb.PageController do
        else
       token = Accounts.generate_user_session_token(user)
       if token do
-        IO.inspect token
+        IO.inspect (token)
         IO.puts "++++++++++"
-        render conn, "dashboard.html"
+        conn
+        |> put_session(:user_token, token)
+        |> redirect(to: Routes.page_path(Endpoint,  :dashboard ) )
       else
         conn
+        |> put_session(:user_token, token)
         |> redirect(to: Routes.page_path(Endpoint,  :login ) )
       end
     end
     conn
+  end
+
+  def dashboard(conn, _params) do
+    render(conn, "dashboard.html")
+  end
+
+  def logout_signout(conn, _params) do
+    conn
+    |> configure_session(drop: true)
+    |> redirect(to: Routes.page_path(Endpoint,  :login ) )
   end
 end

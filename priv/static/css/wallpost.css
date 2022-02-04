@@ -21367,7 +21367,7 @@ body {
   background: #e8ebef;
   background-color: #e8ebef; }
 
-body.login {
+div.login {
   background: url(../img/salactiv-login-bkg.png) no-repeat;
   background-size: cover;
   background-position: 0; }

@@ -24,6 +24,8 @@ defmodule SalactivErpWeb.Router do
     get "/", PageController, :index
     get "/login", PageController, :login
     post "/login", PageController, :signin
+    get "/dashboard", PageController, :dashboard
+    get "/logout", PageController, :logout_signout
   end
 
   # Other scopes may use custom stacks.
