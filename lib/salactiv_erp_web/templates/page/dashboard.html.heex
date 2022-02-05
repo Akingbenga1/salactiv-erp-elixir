@@ -2,4 +2,435 @@
 <h1> Your Dashboard </h1>
 <a href={Routes.page_path(@conn,  :logout_signout )}> Signout  </a>
 
+<div class="d-flex flex-wrap p-30">
+    <div class="dboardbk dboardbk--lcontainer d-flex flex-column pl-0 pr-3">
+        <!-- summary panel -->
+        <div class="panelbk panelbk--sumpanelbk flex flex-wrap flex-grow-0 mb-3">
+            <section class="sumpanelbk__section ">
+                <a
+                        href="/"
+                        class="panelbk__item-click-wrap sumpanelbk__section--link">
+                    <div class="sumpanelbk__section-link-wrap">
+                        <i class="fa fa-users sumpanelbk__section-link--iconname"></i>
+                        <span class="panelbk__item-click-wrap-value sumpanelbk__section-col--value brand-text">
+                              <span> 230 </span>
+                        </span>
+                    </div>
+                    <label class="font-weight-600 panelbk__item-click-wrap-lbl sumpanelbk__section-col--lbl text-capitalize">Active Leads</label>
+                </a>
+            </section>
+            <section class="sumpanelbk__section ">
+                <a
+                        href="/"
+                        class="panelbk__item-click-wrap sumpanelbk__section--link">
+                    <div class="sumpanelbk__section-link-wrap">
+                        <i class="fa fa-users sumpanelbk__section-link--iconname"></i>
+                        <span class="panelbk__item-click-wrap-value sumpanelbk__section-col--value brand-text">
+                         <span> 120 </span>
+                    </span>
+                    </div>
+                    <label class="font-weight-600 panelbk__item-click-wrap-lbl sumpanelbk__section-col--lbl text-capitalize">Active Customers</label>
+                </a>
+            </section>
+            <section class="sumpanelbk__section">
+                <a
+                        href="/"
+                        class="panelbk__item-click-wrap sumpanelbk__section--link">
+                    <div class="sumpanelbk__section-link-wrap">
+                        <i class="fa fa-pencil-alt sumpanelbk__section-link--iconname"></i>
+                        <span class="panelbk__item-click-wrap-value sumpanelbk__section-col--value">56</span>
+                    </div>
+                    <label class="font-weight-600 panelbk__item-click-wrap-lbl sumpanelbk__section-col--lbl text-capitalize">Pending Activation</label>
+                </a>
+            </section>
+            <section class="sumpanelbk__section ">
+                <a
+                        href="/"
+                        class="panelbk__item-click-wrap sumpanelbk__section--link">
+                    <div class="sumpanelbk__section-link-wrap">
+                        <i class="fa fa-list-ol sumpanelbk__section-link--iconname"></i>
+                        <span  class="panelbk__item-click-wrap-value sumpanelbk__section-col--value">234</span>
+                    </div>
+                    <label class="font-weight-600 panelbk__item-click-wrap-lbl sumpanelbk__section-col--lbl text-capitalize">Pending acceptance</label>
+                </a>
+            </section>
+            <section class="sumpanelbk__section border-left text-center">
+                    <a
+                            href="/"
+                            class="panelbk__item-click-wrap sumpanelbk__section--link">
+                        <div class="sumpanelbk__section-link-wrap">
+                <span class="font-weight-600 panelbk__item-click-wrap-value sumpanelbk__section-col--value text-xl">
+                    <p class="inline-symbol inline-symbol--currancy f-w-100">
+                        USD
+                    </p>
+                    <span>
+                       23,098.89
+                    </span>
+                </span>
+                        </div>
+                        <label class="font-weight-600 panelbk__item-click-wrap-lbl sumpanelbk__section-col--lbl text-capitalize">Net Revenue</label>
+                    </a>
+            </section>
+
+        </div>
+        <!-- end summary panel -->
+        <div class="row pt-3 flex-grow-1">
+            <!-- dashboard box panel -->
+            <div
+                    class="
+                            d-flex
+                            flex-column
+                            justify-content-between
+                            flex-grow-1
+                            pl-3
+                            pr-3
+                            w-30">
+                <section class="d-flex flex-column mb-3">
+                    <a
+                            href="/leads/create"
+                            class="
+                    bg-white
+                    align-items-center align-middle
+                    d-flex d-table-cell
+                    dashboard-controls
+                    flex-grow-1
+                    font-weight-600
+                    justify-content-center
+                    p-3
+                    rounded
+                    border-navy border-2
+                    shadow shadow--hover
+                    text-capitalize text-center text-lg">create lead</a>
+
+                    <a
+                            href="/"
+                            class="
+                                    bg-white
+                                    align-items-center align-middle
+                                    d-flex d-table-cell
+                                    dashboard-controls
+                                    flex-grow-1
+                                    font-weight-600
+                                    justify-content-center
+                                    mt-3
+                                    p-3
+                                    rounded
+                                    border-navy border-2
+                                    shadow shadow--hover
+                                    text-capitalize text-center text-lg">change order</a>
+
+                    <a
+                            href="/"
+                            class="
+                                    bg-white
+                                    align-items-center align-middle
+                                    d-flex d-table-cell
+                                    dashboard-controls
+                                    flex-grow-1
+                                    font-weight-600
+                                    justify-content-center
+                                    mt-3
+                                    p-3
+                                    rounded
+                                    border-navy border-2
+                                    shadow shadow--hover
+                                    text-capitalize text-center text-lg">terminate contract</a>
+                </section>
+                <section class="panelbk flex-grow-1">
+                    <div
+                            class="contentpanelbk__section-title flex flex-nowrap dboard-title">
+                        <label
+                                class="contentpanelbk__section-lbl contentpanelbk__section-lbl--title">
+                            <a
+                                    class="contentpanelbk__section-action contentpanelbk__section-action--details p-r-0 m-t-3"> Staff Performance</a>
+                        </label>
+
+                        <select  class="form-control dashboard_dropdown p-0 c-bg-trans height-20px">
+                            <option value="YTD"> YTD </option>
+                            <option value="1">Jan</option>
+                            <option value="2">Feb</option>
+                            <option value="3">Mar</option>
+                            <option value="4">Apr</option>
+                            <option value="5">May</option>
+                            <option value="6">Jun</option>
+                            <option value="7">Jul</option>
+                            <option value="8">Aug</option>
+                            <option value="9">Sep</option>
+                            <option value="10">Oct</option>
+                            <option value="11">Nov</option>
+                            <option value="12">Dec</option>
+                        </select>
+                        <select class="form-control dashboard_dropdown p-0 c-bg-trans height-20px">
+                            <option value="">All</option>
+                            <option value="2022"> 2022</option>
+                            <option value="2021"> 2021</option>
+                            <option value="2020"> 2020 </option>
+                            <option value="2019"> 2019 </option>
+                            <option value="2018"> 2018 </option>
+                        </select>
+                    </div>
+
+                    <div class="overflow-auto" style="max-height: 395px;">
+                        <ul class="    contentpanelbk__section-list
+                                       list-inline
+                                       nano-content
+                                       pr-2
+                                       mb-0">
+                                <li class="contentpanelbk__section--item border-bottom panelbk__item-click-wrap-lbl text-16 font-weight-600 pt-3 pb-3 mb-2 mt-1">
+                                    <div class="
+                                                 contentpanelbk__section-item--left
+                                                 contentpanelbk__section-item--partner-performance
+                                                 text-capitalize             ">
+                                        <a href="#" class="font-weight-600 text-truncate">
+                                        Telecom
+                                        <span>Partner</span></a>
+                                        <span class="
+                                                        contentpanelbk__section--percentage
+                                                        text-13 text-truncate
+                                                        font-weight-400">subscription amount</span>
+                                    </div>
+                                    <div class="contentpanelbk__section-item--right">
+             <span class="contentpanelbk__section--target">44</span>
+                                        <span class="
+                                                        contentpanelbk__section--actual
+                                                        text-body-size text-danger">
+                <p class="
+                   inline-symbol inline-symbol--currancy
+                   f-w-100">
+                   USD
+                </p>
+                <span class="text-warning"> 0 </span>
+             </span>
+                                    </div>
+                                </li>
+                                <li class="contentpanelbk__section--item border-bottom panelbk__item-click-wrap-lbl text-16 font-weight-600 pt-3 pb-3 mb-2 mt-1">
+                                    <div class="
+             contentpanelbk__section-item--left
+             contentpanelbk__section-item--partner-performance
+             text-capitalize
+             "><a href="/app/dashboard#" class="font-weight-600 text-truncate">
+                                        Activation
+                                        <span>Partner
+             </span></a> <span class="
+                contentpanelbk__section--percentage
+                text-13 text-truncate
+                font-weight-400
+                ">subscription amount</span>
+                                    </div>
+                                    <div class="contentpanelbk__section-item--right">
+             <span class="contentpanelbk__section--target">
+             51
+             </span>
+                                        <span class="
+                contentpanelbk__section--actual
+                text-body-size text-danger
+                ">
+                <p class="
+                   inline-symbol inline-symbol--currancy
+                   f-w-100
+                   ">
+                   USD
+                </p>
+                <span class="text-warning"> 0 </span>
+             </span>
+                                    </div>
+                                </li>
+                                <li class="contentpanelbk__section--item border-bottom panelbk__item-click-wrap-lbl text-16 font-weight-600 pt-3 pb-3 mb-2 mt-1">
+                                    <div class="
+             contentpanelbk__section-item--left
+             contentpanelbk__section-item--partner-performance
+             text-capitalize
+             ">
+                                        <a href="/app/dashboard#" class="font-weight-600 text-truncate">
+                                            Facilitator
+                                            <!---->
+                                        </a>
+                                        <span class="
+                contentpanelbk__section--percentage
+                text-13 text-truncate
+                font-weight-400
+                ">subscription amount</span>
+                                    </div>
+                                    <div class="contentpanelbk__section-item--right">
+             <span class="contentpanelbk__section--target">
+             56
+             </span>
+                                        <span class="
+                contentpanelbk__section--actual
+                text-body-size text-danger
+                ">
+                <p class="
+                   inline-symbol inline-symbol--currancy
+                   f-w-100
+                   ">
+                   USD
+                </p>
+                <span class="text-warning"> 0 </span>
+             </span>
+                                    </div>
+                                </li>
+                                <li class="contentpanelbk__section--item border-bottom panelbk__item-click-wrap-lbl text-16 font-weight-600 pt-3 pb-3 mb-2 mt-1">
+                                    <div class="
+             contentpanelbk__section-item--left
+             contentpanelbk__section-item--partner-performance
+             text-capitalize
+             "><a href="/app/dashboard#" class="font-weight-600 text-truncate">
+                                        Referral
+                                        <span>Partner
+             </span></a> <span class="
+                contentpanelbk__section--percentage
+                text-13 text-truncate
+                font-weight-400
+                ">subscription amount</span>
+                                    </div>
+                                    <div class="contentpanelbk__section-item--right">
+             <span class="contentpanelbk__section--target">
+             31
+             </span>
+                                        <span class="
+                contentpanelbk__section--actual
+                text-body-size text-danger
+                ">
+                <p class="
+                   inline-symbol inline-symbol--currancy
+                   f-w-100
+                   ">
+                   USD
+                </p>
+                <span class="text-warning"> 0 </span>
+             </span>
+                                    </div>
+                                </li>
+                                <li class="contentpanelbk__section--item border-bottom panelbk__item-click-wrap-lbl text-16 font-weight-600 pt-3 pb-3 mb-2 mt-1">
+                                    <div class="
+             contentpanelbk__section-item--left
+             contentpanelbk__section-item--partner-performance
+             text-capitalize
+             "><a href="/app/dashboard#" class="font-weight-600 text-truncate">
+                                        Reseller
+                                        <span>Partner
+             </span></a> <span class="
+                contentpanelbk__section--percentage
+                text-13 text-truncate
+                font-weight-400
+                ">subscription amount</span>
+                                    </div>
+                                    <div class="contentpanelbk__section-item--right">
+             <span class="contentpanelbk__section--target">
+             45
+             </span>
+                                        <span class="
+                contentpanelbk__section--actual
+                text-body-size text-danger
+                ">
+                <p class="
+                   inline-symbol inline-symbol--currancy
+                   f-w-100
+                   ">
+                   USD
+                </p>
+                <span class="text-warning"> 0 </span>
+             </span>
+                                    </div>
+                                </li>
+                                <li class="contentpanelbk__section--item border-bottom panelbk__item-click-wrap-lbl text-16 font-weight-600 pt-3 pb-3 mb-2 mt-1">
+                                    <div class="
+             contentpanelbk__section-item--left
+             contentpanelbk__section-item--partner-performance
+             text-capitalize
+             "><a href="/app/dashboard#" class="font-weight-600 text-truncate">
+                                        IT
+                                        <span>Partner
+             </span></a> <span class="
+                contentpanelbk__section--percentage
+                text-13 text-truncate
+                font-weight-400
+                ">subscription amount</span>
+                                    </div>
+                                    <div class="contentpanelbk__section-item--right">
+             <span class="contentpanelbk__section--target">
+             2
+             </span>
+                                        <span class="
+                contentpanelbk__section--actual
+                text-body-size text-danger
+                ">
+                <p class="
+                   inline-symbol inline-symbol--currancy
+                   f-w-100
+                   ">
+                   USD
+                </p>
+                <span class="text-warning"> 0 </span>
+             </span>
+                                    </div>
+                                </li>
+                                <li class="contentpanelbk__section--item border-bottom panelbk__item-click-wrap-lbl text-16 font-weight-600 pt-3 mt-1">
+                                    <div class="
+             contentpanelbk__section-item--left
+             contentpanelbk__section-item--partner-performance
+             text-capitalize
+             "><a href="/app/dashboard#" class="font-weight-600 text-truncate">
+                                        Elite
+                                        <span>Partner
+             </span></a> <span class="
+                contentpanelbk__section--percentage
+                text-13 text-truncate
+                font-weight-400
+                ">subscription amount</span>
+                                    </div>
+                                    <div class="contentpanelbk__section-item--right">
+             <span class="contentpanelbk__section--target">
+             2
+             </span>
+                                        <span class="
+                contentpanelbk__section--actual
+                text-body-size text-danger
+                ">
+                <p class="
+                   inline-symbol inline-symbol--currancy
+                   f-w-100
+                   ">
+                   USD
+                </p>
+                <span class="text-warning"> 0 </span>
+             </span>
+                                    </div>
+                                </li>
+                        </ul>
+
+                    </div>
+                </section>
+            </div>
+
+            <!-- end dashboard box panel -->
+
+            <!-- dashboard box panel -->
+            <section data-smit-test-section="verify-section-element" class="w-70 pl-3 pr-3 dboard_subscriptions_track--table">
+                <div class=" panelbk h-100">
+                    <div class="">
+                        <div class="PipeLineTabs"
+                                :currency="currency"
+                                :exchange_rate="exchange_rate"
+                        ></div>
+
+                        <!-- <Summary
+                            :currency="currency"
+                            :rate="exchange_rate"
+                        ></Summary> -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- <Summary :currency="currency" :rate="exchange_rate"></Summary> -->
+            <!-- end dashboard box panel -->
+        </div>
+    </div>
+
+    <!-- right panel -->
+    <div class="RightSummary"
+
+    ></div>
+    <!-- end right panel -->
+</div>
 

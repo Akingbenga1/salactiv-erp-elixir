@@ -1,0 +1,749 @@
+<div>
+    <nav
+            id="app-header"
+            class="
+                flex-column
+                navbar navbar-expand-lg navbar-horizontal navbar-light
+                bg-white
+                p-0
+                shadow
+            "
+    >
+        <div
+                class="
+                    align-items-center
+                    d-flex
+                    justify-content-between
+                    pl-3
+                    pr-3
+                    w-100
+                "
+        >
+            <a class="flex-sm-grow-0 mr-sm-4 navbar-brand pr-2" href="#">
+                <img
+                        src="/img/brand/salactiv-icon.png"
+                        class="hoverZoomLink"
+                        style="width: 45px; height: 45px"
+                />
+            </a>
+
+            <button
+                    class="navbar-toggler collapsed"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbar-default"
+                    aria-controls="navbar-default"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div id="navbar-default" class="navbar-collapse collapse">
+                <div class="navbar-collapse-header">
+                    <div class="row align-items-center">
+                        <div class="col-6 collapse-brand">
+                            <a href="javascript:void(0)">
+                                <img
+                                        src="/img/brand/salactiv-logo-mix-brand.png"
+                                />
+                            </a>
+                        </div>
+                        <div class="col-6 collapse-close">
+                            <button
+                                    type="button"
+                                    class="navbar-toggler collapsed"
+                                    data-toggle="collapse"
+                                    data-target="#navbar-default"
+                                    aria-controls="navbar-default"
+                                    aria-expanded="false"
+                                    aria-label="Toggle navigation"
+                            >
+                                <span></span>
+                                <span></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- main menu links -->
+                <ul class="mr-sm-4 navbar-nav">
+                </ul>
+                <!-- end main menu links -->
+                <!-- company -->
+                <div class="flex-grow-1 mr-sm-4 text-center">
+                    <label
+                            class="text-capitalize m-0"
+                            style="font-size: 25px"
+                    >
+                       WallPost Company
+                    </label>
+                </div>
+                <!-- end company -->
+
+                <ul class="ml-lg-auto mr-sm-4 navbar-nav">
+
+                        <li class="c-header-nav-item dropdown d-md-down-none mx-2">
+                            <a class="nt">
+                                <span>
+                                    <i class="fa fa-bell"></i>
+                                    <span class="badge badge-pill badge-danger">2</span>
+                                </span>
+                            </a>
+                                <a href="#"> <strong>You have 2  notifications</strong></a>
+                                <a> 3</a>
+                        </li>
+                </ul>
+
+                <!-- language -->
+                <div class="mr-sm-4 text-center">
+                    <div class="dropdown">
+                        <a
+                                data-toggle="dropdown"
+                                href="#"
+                                role="button"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                                class="
+                                    font-weight-bold
+                                    rounded-top
+                                    text-blue text-capitalize
+                                    z-index-higher
+                                    pt-3
+                                    pb-3
+                                ">
+                            (EN) <i class="fa fa-chevron-down pl-1"></i></a>
+                        <a
+                                data-toggle="dropdown"
+                                href={Routes.page_path(@conn,  :logout_signout )}
+                                role="button"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                                class="
+                                    font-weight-bold
+                                    rounded-top
+                                    text-blue text-capitalize
+                                    z-index-higher
+                                    pt-3
+                                    pb-3
+                                ">
+                            Sign Out </a>
+                    </div>
+                </div>
+                <!-- end language -->
+
+                <!-- settings icon -->
+
+                <!-- @include('backend.layouts.theme.components.settings') -->
+
+                <!-- end settings icon -->
+            </div>
+        </div>
+
+        <!-- second menu-bar -->
+
+        <div class="headerbk_nav headerbk_nav--secondary w-100">
+            <div class="nav_secondary_sub__topmenu">
+                <ul class="list-inline mb-0">
+                    <li
+                            class="nav_secondary__list-left--item"
+                    >
+                        <a
+                                class="
+                                    bg-green
+                                    nav-link
+                                    nav_secondary__list-left-item--link
+                                    pl-4
+                                    pr-3
+                                    pt-1
+                                    text-lg text-white
+                                "
+                                href="javascript:history.back()"
+                                title="Back"
+                        >
+                            <i
+                                    class="
+                                        align-middle
+                                        fa fa-arrow-left
+                                        nav_secondary__list-left-item-link--icon
+                                        text-lg
+                                    "
+                            ></i>
+                        </a>
+                    </li>
+                </ul>
+
+                <ul class="list-inline mb-0 nav_secondary__list-left">
+                    <li class="nav_secondary__list-left--item">
+                        <a
+                                class="
+                                    nav_secondary__list-left-item--link
+                                    active
+                                "
+                                to="/app/dashboard"
+                                data-toggle="tooltip"
+                                data-placement="bottom"
+                                title=""
+                        >
+                            <i
+                                    class="
+                                        fa fa-home
+                                        nav_secondary__list-left-item-link--icon
+                                    "
+                            ></i>
+                        </a>
+                    </li>
+                    <li
+                            class="
+                                nav_secondary__list-left--item
+                                white_version_menu_create_section_head
+                            "
+                    >
+                        <a
+                                class="
+                                    nav_secondary__list-left-item--link
+                                    tablinks
+                                    c-bg-trans-f
+                                    cursor-text
+                                    opacity-6
+                                "
+                                href="javascript:void"
+                                style="pointer-events: none"
+                        >
+                            Create
+                        </a>
+                        <div class="menu-separator"></div>
+                    </li>
+                    <li  class="nav_secondary__list-left--item">
+                        <a
+                                class="
+                                    nav_secondary__list-left-item--link
+                                    tablinks
+                                "
+                                href="/"
+                        >
+                            Staff
+                        </a>
+                        <div class="menu-separator"></div>
+                    </li>
+
+                    <li
+                            class="
+                                nav_secondary__list-left--item
+                                white_version_menu_create_section_head
+                            "
+                    >
+                        <a
+                                class="
+                                    nav_secondary__list-left-item--link
+                                    tablinks
+                                    c-bg-trans-f
+                                    cursor-text
+                                    opacity-6
+                                "
+                                href="javascript:void"
+                                style="pointer-events: none"
+                        >
+                            List
+                        </a>
+                        <div class="menu-separator"></div>
+                    </li>
+                    <li class="nav_secondary__list-left--item">
+                        <a
+                                class="
+                                    nav_secondary__list-left-item--link
+                                    tablinks
+                                "
+
+                                href="/"
+                        >
+                            Staff
+                        </a>
+                        <!-- <div class="menu-separator"></div> -->
+                    </li>
+                    <li
+                            class="
+                                nav_secondary__list-left--item
+                                white_version_menu_create_section_head
+                            "
+                    >
+                        <a
+                                class="
+                                    nav_secondary__list-left-item--link
+                                    tablinks
+                                    c-bg-trans-f
+                                    cursor-text
+                                    opacity-6
+                                "
+                                href="javascript:"
+                                style="pointer-events: none"
+                        >
+                            List
+                        </a>
+                        <div class="menu-separator"></div>
+                    </li>
+                    <li class="nav_secondary__list-left--item">
+                        <a
+                                class="nav_secondary__list-left-item--link tablinks"
+                                to="/"
+                        >
+                            Promo Codes
+                        </a>
+                    </li>
+                </ul>
+
+                <ul
+                        class="
+                            flex-grow-0
+                            list-inline
+                            mb-0
+                            nav_secondary__list-left
+                        "
+                >
+                    <li class="nav_secondary__list-left-item--link">
+                        <select data-v-c9b1a182="" class="
+                                form-control
+                                dashboard_dropdown
+                                d-in
+                                p-l-0
+                                m-r-5
+                                bg-transparent
+                                c-bg-trans
+                                text-white
+                            " style="border: 0px; outline: 0px; width: 135px !important; --darkreader-inline-border-top: initial; --darkreader-inline-border-right: initial; --darkreader-inline-border-bottom: initial; --darkreader-inline-border-left: initial; --darkreader-inline-outline: initial;" data-darkreader-inline-border-top="" data-darkreader-inline-border-right="" data-darkreader-inline-border-bottom="" data-darkreader-inline-border-left="" data-darkreader-inline-outline=""><option data-v-c9b1a182="" value="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                ">
+                            All Countries
+                        </option> <option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="Andorra">
+                            Andorra
+                        </option><option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="Angola">
+                            Angola
+                        </option><option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="Argentina">
+                            Argentina
+                        </option><option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="Australia">
+                            Australia
+                        </option><option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="Austria">
+                            Austria
+                        </option><option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="Bahrain">
+                            Bahrain
+                        </option><option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="Bangladesh">
+                            Bangladesh
+                        </option><option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="Benin">
+                            Benin
+                        </option><option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="Cocos (Keeling) Islands">
+                            Cocos (Keeling) Islands
+                        </option><option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="Ecuador">
+                            Ecuador
+                        </option><option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="Eritrea">
+                            Eritrea
+                        </option><option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="Germany">
+                            Germany
+                        </option><option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="Haiti">
+                            Haiti
+                        </option><option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="India">
+                            India
+                        </option><option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="Indonesia">
+                            Indonesia
+                        </option><option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="Italy">
+                            Italy
+                        </option><option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="Jamaica">
+                            Jamaica
+                        </option><option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="Jordan">
+                            Jordan
+                        </option><option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="Kenya">
+                            Kenya
+                        </option><option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="New Zealand">
+                            New Zealand
+                        </option><option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="Philippines">
+                            Philippines
+                        </option><option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="Qatar">
+                            Qatar
+                        </option><option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="Rwanda">
+                            Rwanda
+                        </option><option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="Tunisia">
+                            Tunisia
+                        </option><option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="Turkey">
+                            Turkey
+                        </option><option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="United Arab Emirates">
+                            United Arab Emirates
+                        </option><option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="United States">
+                            United States
+                        </option></select>
+                    </li>
+                    <li class="nav_secondary__list-left-item--link">
+                        <!--                            @change="setCurrencyExchangeRate"-->
+                        <select data-v-c9b1a182="" class="
+                                form-control
+                                dashboard_dropdown
+                                d-in
+                                p-l-0
+                                m-r-5
+                                bg-transparent
+                                c-bg-trans
+                                text-white
+                            " style="border: 0px; outline: 0px; --darkreader-inline-border-top: initial; --darkreader-inline-border-right: initial; --darkreader-inline-border-bottom: initial; --darkreader-inline-border-left: initial; --darkreader-inline-outline: initial;" data-darkreader-inline-border-top="" data-darkreader-inline-border-right="" data-darkreader-inline-border-bottom="" data-darkreader-inline-border-left="" data-darkreader-inline-outline=""><option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="AED">
+                            AED
+                        </option><option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="AOA">
+                            AOA
+                        </option><option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="ARS">
+                            ARS
+                        </option><option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="AUD">
+                            AUD
+                        </option><option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="BDT">
+                            BDT
+                        </option><option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="ERN">
+                            ERN
+                        </option><option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="EUR">
+                            EUR
+                        </option><option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="IDR">
+                            IDR
+                        </option><option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="INR">
+                            INR
+                        </option><option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="JMD">
+                            JMD
+                        </option><option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="JOD">
+                            JOD
+                        </option><option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="NZD">
+                            NZD
+                        </option><option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="QAR">
+                            QAR
+                        </option><option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="RWF">
+                            RWF
+                        </option><option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="TND">
+                            TND
+                        </option><option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="TRY">
+                            TRY
+                        </option><option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="USD">
+                            USD
+                        </option><option data-v-c9b1a182="" class="
+                                    form-control
+                                    bg-transparent
+                                    c-bg-trans
+                                    text-body
+                                " value="XOF">
+                            XOF
+                        </option></select>
+
+                    </li>
+                    <li
+                            class="nav_secondary__list-left--item pull-right"
+                    >
+                        <a
+
+                                href="javascript:;"
+                                class="nav_secondary__list-left-item--link"
+                        >
+                            <i
+                                    class="
+                                        fa fa-cog
+                                        nav_secondary__list-right-item-link--icon
+                                    "
+                            ></i>
+                        </a>
+                    </li>
+                    <li
+                            class="
+                                nav_secondary__list-left--item
+                                pull-right
+                                quick_guide
+                            "
+                    >
+                        <a
+                                href="javascript:;"
+                                class="nav_secondary__list-left-item--link"
+                        >
+                            <i
+                                    class="
+                                        fa fa-film
+                                        nav_secondary__list-left-item-link--icon
+                                    "
+                            ></i>
+                        </a>
+                    </li>
+                    <li
+                            class="
+                                nav_secondary__list-left--item
+                                pull-right
+                                video_guide
+                            "
+                            title="Video Tutorial"
+                    >
+                        <a
+                                class="nav_secondary__list-left-item--link"
+                                data-toggle="modal"
+                                data-target="#white_version_video_guide_primary_container"
+                        >
+                            <i
+                                    class="
+                                        fa fa-info-circle
+                                        nav_secondary__list-left-item-link--icon
+                                    "
+                            ></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- end second menu-bar -->
+        <!-- settings sub-menu-bar   -->
+        <div
+
+                class="
+                    headerbk_nav headerbk_nav--secondary
+                    w-100
+                    shadow
+                    bg-white
+                    rounded
+                "
+        >
+            <div class="SubmenuSettings float-right">
+                <div style="width: 100px"></div>
+
+                <ul
+                        class="
+                            flex-grow-0
+                            list-inline
+                            mb-0
+                            nav_secondary__list-left
+                        "
+                >
+                    <li
+                            class="
+                                nav_secondary__list-left--item
+                                white_version_menu_create_section_head
+                                my-hover
+                            "
+                    >
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- end settings-sub-menu-bar -->
+    </nav>
+</div>
+
+<%= @inner_content %>

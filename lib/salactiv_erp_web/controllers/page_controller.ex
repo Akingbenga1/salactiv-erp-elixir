@@ -51,7 +51,7 @@ defmodule SalactivErpWeb.PageController do
   end
 
   def dashboard(conn, _params) do
-    render(conn, "dashboard.html")
+    render(conn, "dashboard.html" ,  layout: {SalactivErpWeb.LayoutView, "inner.html"} )
   end
 
   def logout_signout(conn, _params) do
