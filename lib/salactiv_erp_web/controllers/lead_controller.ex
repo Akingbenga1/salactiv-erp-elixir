@@ -1,20 +1,17 @@
-defmodule SalactivErpWeb.PageController do
+defmodule SalactivErpWeb.LeadController do
   use SalactivErpWeb, :controller
   alias SalactivErpWeb.Router.Helpers, as: Routes
   alias SalactivErpWeb.Endpoint
   alias SalactivErp.Accounts
   alias SalactivErpWeb.UserAuth
 
-  plug SalactivErpWeb.Plugs.RequireAuth when action in [:dashboard, :index]
+  plug SalactivErpWeb.Plugs.RequireAuth
 
-  plug SalactivErpWeb.Plugs.NotRequireAuth when action in [:login]
-
-  def index(conn, _params) do
-#    render(conn, "index.html")
-    render(conn, "dashboard.html" ,  layout: {SalactivErpWeb.LayoutView, "inner.html"} )
+  def create(conn, _params) do
+    render(conn, "create_lead.html" ,  layout: {SalactivErpWeb.LayoutView, "inner.html"} )
   end
 
-  def login(conn, _params) do
+  def post(conn, _params) do
     render conn, "login.html", form_csrt_token: get_csrf_token()
   end
 

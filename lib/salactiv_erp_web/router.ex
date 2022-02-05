@@ -28,6 +28,12 @@ defmodule SalactivErpWeb.Router do
     get "/logout", PageController, :logout_signout
   end
 
+  scope "/leads", SalactivErpWeb do
+    pipe_through :browser # Use the default browser stacks
+
+    get "/create", LeadController, :create
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", SalactivErpWeb do
   #   pipe_through :api

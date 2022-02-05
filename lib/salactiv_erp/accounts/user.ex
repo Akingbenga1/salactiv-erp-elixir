@@ -4,6 +4,10 @@ defmodule SalactivErp.Accounts.User do
 
   schema "users" do
     field :email, :string
+    field :first_name, :string
+    field :middle_name, :string
+    field :last_name, :string
+    field :mobile, :string
     field :password, :string, virtual: true, redact: true
     field :hashed_password, :string, redact: true
     field :confirmed_at, :naive_datetime

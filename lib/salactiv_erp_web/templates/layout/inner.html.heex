@@ -19,9 +19,10 @@
                     w-100
                 "
         >
-            <a class="flex-sm-grow-0 mr-sm-4 navbar-brand pr-2" href="#">
+            <a class="flex-sm-grow-0 mr-sm-4 navbar-brand pr-2" href="/dashboard">
                 <img
-                        src="/img/brand/salactiv-icon.png"
+
+                        src={Routes.static_path(@conn, "/assets/img/brand/salactiv-icon.png")}
                         class="hoverZoomLink"
                         style="width: 45px; height: 45px"
                 />
@@ -113,6 +114,9 @@
                                     pb-3
                                 ">
                             (EN) <i class="fa fa-chevron-down pl-1"></i></a>
+                        <div class="d-inline-block font-weight-bold rounded-top text-body text-capitalize z-index-higher">
+                            Super Admin
+                            </div>
                         <a
                                 data-toggle="dropdown"
                                 href={Routes.page_path(@conn,  :logout_signout )}

@@ -10,8 +10,8 @@ defmodule SalactivErpWeb.Plugs.RequireAuth do
 
   def call(conn, _params) do
     token = get_session(conn, "user_token")
-    IO.puts "++++++++++"
-    IO.inspect (token)
+#    IO.puts "++++++++++"
+#    IO.inspect (token)
 #    if conn.assigns[:user] do
     if token do
       conn
