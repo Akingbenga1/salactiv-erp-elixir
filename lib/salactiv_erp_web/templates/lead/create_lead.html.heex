@@ -11,6 +11,9 @@
         <div class="panelbk height-full">
             <form
 
+                    method="POST"
+                    action={Routes.lead_path(@conn, :post_create)}
+
                     id="form-template"
                     name="form-template">
                 <div class="mt-2" >
@@ -34,7 +37,9 @@
                     </div>
                 </div>
                 <div class="p-4">
+
                     <div class="row">
+                        <input type="hidden" name="_csrf_token" value={@form_csrf_token} />
                         <div class="col-md-6">
                             <fieldset>
                                 <legend
@@ -217,6 +222,7 @@
                                                     "
                                                     id="package_name_field"
                                                     @change="getPackages"
+                                                    name="packages"
                                             >
                                                 <option value="">
                                                     Please Select
@@ -303,6 +309,39 @@
                                                         type="text"
                                                         class="form-control"
                                                 />
+                                                <div
+                                                        class="invalid-feedback"
+                                                >
+                                                    city is required.
+                                                </div>
+                                            </div>
+                                            <div class="col-12" style="margin-top: 20px">
+                                                <label
+                                                        for="validationCustom04"
+                                                        class="
+                                                            form-labels
+                                                            text-capitalize
+                                                        ">
+                                                    Country
+                                                    <span class="required">*</span>
+                                                </label>
+                                                <select
+                                                        class="
+                                                        border-2
+                                                        col-12
+                                                        form-control
+                                                        text-body
+                                                        text-capitalize
+                                                    "
+                                                        name="country"
+                                                >
+                                                    <option value="">Please Select</option>
+                                                    <%= for country <- @countries do %>
+                                                    <option value={ country.id}>
+                                                        <%= country.name %>
+                                                    </option>
+                                                    <% end %>
+                                                </select>
                                                 <div
                                                         class="invalid-feedback"
                                                 >

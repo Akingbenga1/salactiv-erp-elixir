@@ -9,7 +9,7 @@ defmodule SalactivErp.Repo.Migrations.CreateClientsTable do
       add :company_name, :string, null: false
       add :company_email, :string, null: false
       add :company_phone, :string, null: false
-      add :country_id, :string
+      add :country_id, :integer
       add :referred_by, references(:partners)
       add :created_by,  references(:users)
       add :assigned_to, references(:users)

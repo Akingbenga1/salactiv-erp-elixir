@@ -4,65 +4,78 @@ defmodule SalactivErpWeb.LeadController do
   alias SalactivErpWeb.Endpoint
   alias SalactivErp.Accounts
   alias SalactivErpWeb.UserAuth
+  alias SalactivErp.Repo
+  alias SalactivErp.Country.Country
+  alias SalactivErp.Client.Client
+
 
   plug SalactivErpWeb.Plugs.RequireAuth
 
   def create(conn, _params) do
-    render(conn, "create_lead.html" ,  layout: {SalactivErpWeb.LayoutView, "inner.html"} )
+
+    countries = Repo.all(Country)
+
+    render(conn, "create_lead.html", form_csrf_token: get_csrf_token(), countries: countries,
+           layout: {SalactivErpWeb.LayoutView, "inner.html"} )
   end
 
-  def post(conn, _params) do
-    render conn, "login.html", form_csrt_token: get_csrf_token()
+  def list(conn, _params) do
+
+    clients  = Repo.all(Client)
+    countries = Repo.all(Country)
+
+    IO.puts "++++++++++"
+    IO.inspect clients
+    IO.puts "++++++++++"
+
+    render(conn, "create_lead.html", form_csrf_token: get_csrf_token(), countries: countries,
+           layout: {SalactivErpWeb.LayoutView, "inner.html"} )
   end
 
-  def signin(conn, params) do
+  def post_create(conn, params) do
 
     IO.puts "++++++++++"
     IO.inspect params
     IO.puts "++++++++++"
 
-    %{"email" => user_email, "password" => user_password} =  params
-     IO.inspect user_email
-     IO.inspect user_password
-     IO.puts "++++++++++"
+    countries = Repo.all(Country)
+     # Run validation and save client to DB s
 
+    clientInsertData = %Client{
+                                    :promo_code =>  "D4536",
+                                    :company_name =>  params["company_name"],
+                                    :company_email =>  params["company_email"],
+                                    :company_phone =>  params["company_phone"],
+                                    :company_city =>  params["company_city"],
+                                    :country_id =>  String.to_integer(params["country"]) ,
+                                    :referred_by =>  1,
+                                    :created_by =>  1,
+                                    :assigned_to =>  1,
+                                    :partner_id =>  1,
+                                    :wallpost_lead_id =>  "PLererrlsdkk324",
+                                    :is_client =>  "0",
+                                    :contact_first_name => params["contact_first_name"],
+                                    :contact_last_name =>  params["contact_last_name"],
+                                    :contact_email => params["company_email"],
+                                    :contact_phone =>  params["company_phone"],
+                                    :contact_email =>  params["company_email"],
+                                    :company_street =>  params["company_address"],
+                                    :company_address =>  params["company_address"],
+                                    :package =>  params["package"],
+                                    :longitude => "-100.445882",
+                                    :latitude =>  "39.7837304",
+                                    :location =>  "-100.445882,39.7837304"
+                              }
 
-     user = Accounts.get_user_by_email_and_password(user_email, user_password )
-     if !user do
-      conn
-      |> redirect(to: Routes.page_path(Endpoint,  :login ) )
-       else
-      token = Accounts.generate_user_session_token(user)
-      if token do
-        IO.inspect (token)
-        IO.puts "++++++++++"
+    case Repo.insert(clientInsertData) do
+      {:ok, _client} ->
         conn
-        |> put_session(:user_token, token)
-        |> redirect(to: Routes.page_path(Endpoint,  :dashboard ) )
-      else
-        conn
-        |> put_session(:user_token, token)
-        |> redirect(to: Routes.page_path(Endpoint,  :login ) )
-      end
+        |> put_flash(:info, "Client created successfully.")
+        |> redirect(to:  Routes.lead_path(Endpoint,  :create ))
+      {:error, _changeset} ->
+        render(conn, "create_lead.html" , form_csrf_token: get_csrf_token() , countries: countries  ,  layout: {SalactivErpWeb.LayoutView, "inner.html"} )
     end
-    conn
-  end
 
-  def dashboard(conn, _params) do
-    token = get_session(conn, "user_token")
-    IO.puts "++++ Dashboard token ++++++"
-    IO.inspect (token)
-#    user = user_token && Accounts.get_user_by_session_token(user_token)
-#    assign(conn, :current_user, user)
 
-    IO.puts "++++ Dashboard current_user ++++++"
-    IO.inspect (conn.assigns[:current_user])
-    render(conn, "dashboard.html" ,   layout: {SalactivErpWeb.LayoutView, "inner.html"} )
-  end
-
-  def logout_signout(conn, _params) do
-    conn
-    |> configure_session(drop: true)
-    |> redirect(to: Routes.page_path(Endpoint,  :login ) )
   end
 end

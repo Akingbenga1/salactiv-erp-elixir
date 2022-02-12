@@ -46,7 +46,8 @@
                         <div class="col-6 collapse-brand">
                             <a href="javascript:void(0)">
                                 <img
-                                        src="/img/brand/salactiv-logo-mix-brand.png"
+
+                                       src={Routes.static_path(@conn, "/img/brand/salactiv-logo-mix-brand.png")}
                                 />
                             </a>
                         </div>
@@ -162,7 +163,7 @@
                                     pt-1
                                     text-lg text-white
                                 "
-                                href="javascript:history.back()"
+                                href="/"
                                 title="Back"
                         >
                             <i
@@ -211,7 +212,7 @@
                                     cursor-text
                                     opacity-6
                                 "
-                                href="javascript:void"
+                                href="/"
                                 style="pointer-events: none"
                         >
                             Create
@@ -245,7 +246,7 @@
                                     cursor-text
                                     opacity-6
                                 "
-                                href="javascript:void"
+                                href="#"
                                 style="pointer-events: none"
                         >
                             List
