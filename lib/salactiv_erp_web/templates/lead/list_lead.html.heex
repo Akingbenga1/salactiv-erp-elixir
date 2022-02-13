@@ -1,0 +1,551 @@
+<div class="p-30">
+    <div class="slide_head slide_head--dboard-left flex m-b-5 m-t--25">
+        <label
+                class="d-block m-0 slide_head__title text-16 text-black-50" style="">Active Leads</label>
+    </div>
+    <!-- <Errors :errorList="errors"></Errors> -->
+    <div class="panelbk">
+        <div
+                class="
+                    table-controls
+                    d-flex
+                    flex-wrap
+                    justify-content-between
+                    align-items-center
+                    mb-2
+                ">
+            <div class="d-flex flex-wrap">
+                <div class="mr-3">
+                    <label
+                            for="list_row_count"
+                            class="
+                                font-weight-600
+                                text-capitalize text-gray text-13
+                                d-inline-block
+                                mb-0
+                            ">show</label>
+
+                    <select
+                            class="
+                                form-control form-control-sm
+                                h-100
+                                border-2
+                                rounded-pill
+                                text-body
+                                w-auto
+                                d-inline-block
+                                ml-1
+                                mr-1
+                            "
+                            @change="getLeads()">
+                        <option>10</option>
+                        <option>25</option>
+                        <option>50</option>
+                        <option>100</option>
+                    </select>
+                    <span>per page</span>
+                </div>
+
+                <a
+                        href="/leads/create"
+                        class="
+                            btn btn-sm
+                            h-100
+                            text-body-size
+                            btn--navy
+                            rounded-pill
+                            text-capitalize
+                            form-control-sm
+                            pl-3
+                            pr-3
+                        ">
+                    <i class="d-inline fa-plus fas mr-2"></i>add new
+                </a>
+            </div>
+
+            <div class="d-flex flex-wrap">
+
+            </div>
+            <div class="d-flex flex-wrap">
+                <button
+                        class="
+                            btn btn-sm
+                            h-100
+                            text-body-size
+                            btn--navy
+                            rounded-pill
+                            text-capitalize
+                            form-control-sm
+                            pl-3
+                            pr-3
+                        "
+                        type="button">
+                    <i class="d-inline fa-arrow-down fas mr-2"></i>export
+                </button>
+
+                <select
+                        v-model="filter.partner_type"
+                        class="
+                            form-control
+                            h-100
+                            border-2
+                            rounded-pill
+                            text-body text-capitalize
+                            w-auto
+                            d-inline-block
+                        ">
+                    <option value="">All Partner type</option>
+                </select>
+
+                <select
+                        class="
+                            border-2
+                            d-inline-block
+                            form-control form-control-sm
+                            h-100
+                            rounded-pill
+                            text-body text-capitalize
+                            w-auto
+                        ">
+                    <option value="">YTD</option>
+                </select>
+
+                <select
+                        class="
+                            form-control form-control-sm
+                            h-100
+                            border-2
+                            rounded-pill
+                            text-body text-capitalize
+                            w-auto
+                            d-inline-block
+                        ">
+                    <option value="">Country</option>
+
+                </select>
+
+                <select
+                        v-model="filter.status"
+                        class="
+                            form-control form-control-sm
+                            h-100
+                            border-2
+                            rounded-pill
+                            text-body text-capitalize
+                            w-auto
+                            d-inline-block
+                        "
+                >
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                </select>
+
+                <div class="input-group w-auto">
+                    <input
+                            type="text"
+                            class="
+                                Select
+                                border-2
+                                form-control form-control-sm
+                                h-100
+                                pr-6
+                                rounded-pill
+                                text-body text-primary
+                            "
+                            id="validationCustom02"
+                            placeholder="Search list"
+                    />
+                    <div class="input-group-prepend">
+                        <div
+                                class="
+                                    bg-transparent
+                                    border-0
+                                    ml--4
+                                    rounded-pill
+                                    z-index-4
+                                "
+                        >
+                            <a
+                                    href="#"
+                                    class="
+                                        bg-form-control
+                                        border-2
+                                        text-navy
+                                        border-navy
+                                        btn btn-sm
+                                        form-control-sm
+                                        h-100
+                                        rounded-pill
+                                        text-capitalize
+                                    "
+                            >
+                                <i class="fas fa-search"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="invalid-feedback">
+                        location is required.
+                    </div>
+                </div>
+                <!-- <div class="input-group w-auto">
+                    <button
+                        class="ml-3 btn btn-sm btn--navy rounded-pill text-capitalize form-control-sm pl-3 pr-3"
+                        type="button"
+                    >
+                        <i class="d-inline fa-arrow-up fas mr-2"></i>export
+                    </button> -->
+                <!-- <button
+                        @click="leadActionAll('accepted')"
+                        class="ml-1 btn btn-sm btn-success rounded-pill text-capitalize form-control-sm pl-3 pr-3"
+                        type="button"
+                    >
+                        <i class="d-inline fa-check fas mr-2"></i>Export
+                    </button>
+                </div>-->
+            </div>
+        </div>
+
+        <div class="list-view-full-content overflow-auto">
+            <div class="table-header-fixed table-responsive">
+                <table class="align-items-center table m-0">
+                    <thead class="">
+                    <tr>
+
+                        <th
+                                width="25%"
+                                scope="col"
+                                class="
+                                        border-top-0
+                                        border-bottom-2
+                                        border-primary
+                                        text-table-th text-capitalize
+                                    "
+                                data-sort="name">
+                            <select
+                                    class="
+                                            container
+                                            cursor-pointer
+                                            font-weight-600
+                                            form-control form-control-sm
+                                            w-100
+                                            text-capitalize
+                                            text-table-th
+                                            text-truncate
+                                            h-100
+                                        ">
+                                <option value="">All Leads</option>
+
+                            </select>
+                        </th>
+
+                        <th
+                                width="18%"
+                                scope="col"
+                                class="
+                                        border-top-0 border-bottom-2
+                                        text-table-th text-capitalize
+                                    "
+                                data-sort="name">
+                            Contacts
+                        </th>
+                        <th
+                                width="15%"
+                                scope="col"
+                                class="
+                                        border-top-0
+                                        border-bottom-2
+                                        border-primary
+                                        text-table-th text-capitalize
+                                    ">
+                            <select
+                                    v-if="referrers.data"
+                                    class="
+                                            container container
+                                            cursor-pointer
+                                            font-weight-600
+                                            form-control form-control-sm
+                                            w-100
+                                            text-capitalize
+                                            text-table-th
+                                            text-truncate
+                                            h-100
+                                        "
+                                    @change="getLeads()">
+                                <option value="">Referred By</option>
+
+
+                            </select>
+                        </th>
+                        <th
+                                v-if="$gate.isActivation()"
+                                width="11%"
+                                scope="col"
+                                class="
+                                        border-top-0 border-bottom-2
+                                        text-table-th text-capitalize
+                                    ">
+                            <select
+                                    v-model="filter.staff_id"
+                                    class="
+                                            container container
+                                            cursor-pointer
+                                            font-weight-600
+                                            form-control form-control-sm
+                                            w-100
+                                            text-capitalize
+                                            text-table-th
+                                            text-truncate
+                                            h-100
+                                        "
+                                    @change="getLeads()">
+                                <option value="">Staff Assigned</option>
+                                <option
+                                        v-for="(staffss, index) in staffs"
+                                        :key="index"
+                                        :value="staffss.id">
+                                    {{ staffss.full_name }}
+                                </option>
+                            </select>
+                        </th>
+                        <th
+                                scope="col"
+                                class="
+                                        border-top-0 border-bottom-2
+                                        text-table-th text-capitalize
+                                    "
+                                data-sort="name">
+                            <select
+                                    class="
+                                            container
+                                            cursor-pointer
+                                            font-weight-600
+                                            form-control form-control-sm
+                                            text-capitalize
+                                            text-table-th
+                                            text-truncate
+                                            h-100
+                                        ">
+                                <option value="">All Stages</option>
+                                <option value="Engagement">
+                                    Engagement
+                                </option>
+                                <option value="In Progress">
+                                    In Progress
+                                </option>
+                                <option value="Lost">Lost</option>
+                                <option value="Negotiation">
+                                    Negotiation
+                                </option>
+                                <option value="Not Started">
+                                    Not Started
+                                </option>
+                                <option value="Proposal">
+                                    Proposals
+                                </option>
+                            </select>
+                        </th>
+                        <th
+                                scope="col"
+                                class="
+                                        border-top-0 border-bottom-2
+                                        text-table-th text-capitalize
+                                    ">
+                            Actions
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody class="list" >
+
+                        <%= for client <- @clients do %>
+                        <tr>
+                            <td scope="row" class="max-namen" >
+                                <a
+                                        href='/'
+                                        class="media-body text-capitalize">
+
+                                    <span
+                                            class="d-block mb-0 name text-blue">
+                                               <%= client.company_name %>
+                                            </span>
+                                    <span
+                                            class="
+                                                    d-block
+                                                    mb-0
+                                                    text-success
+                                                    font-weight-500
+                                                ">
+                                                Created On
+                                        <%= client.inserted_at %>
+                                    </span>
+                                    <span class="d-block mb-0 font-weight-700">
+                                        <%= client.country.name %>
+                                    </span>
+                                </a>
+                                <!-- <view_lead :lead="lead"></view_lead> -->
+                            </td>
+                            <td class="contact">
+                                        <span
+                                                class="
+                                                d-block
+                                                text-capitalize text-14
+                                                font-weight-500
+                                            ">
+                                            Email
+                                        </span>
+
+                                <span
+                                        class="d-block"
+                                        v-tooltip="
+                                                lead.company_email &&
+                                                lead.company_email.length > 30
+                                                    ? lead.company_email
+                                                    : ''
+                                            "
+                                >
+                                            <%= client.company_email %>
+                                        </span>
+
+                                <span
+                                        class="
+                                                d-block
+                                                text-capitalize text-14
+                                                font-weight-500
+                                            "
+                                >
+                                            Phone
+                                        </span>
+                                <span
+                                        class="d-block text-capitaliz"
+                                        v-tooltip="
+                                                lead.company_phone &&
+                                                lead.company_phone.length > 35
+                                                    ? lead.company_phone
+                                                    : ''
+                                            "
+                                >
+                                            <%= client.company_phone %>
+                                        </span>
+                            </td>
+                            <td class="">
+                                        <span
+                                                class="
+                                                d-block
+                                                text-capitalize text-12
+                                                font-weight-300
+                                                text-truncate
+                                            "
+                                        >
+                                            <%= client.assignee.first_name %> <%=client.assignee.last_name %>
+                                        </span>
+
+                                            <span
+                                                    class="d-block text-truncate"
+                                                    v-if="
+                                                    lead.assignee_partner &&
+                                                    lead.assignee_partner
+                                                        .partner_type_id == 2
+                                                "
+                                            >
+                                               <%= client.assignee.first_name %> <%=client.assignee.last_name %>
+                                            </span>
+                                <span
+                                            class="d-block text-truncate"
+                                    >
+                                                <%= client.assigneePartner.name %>
+                                            </span>
+                                <span
+                                        class="
+                                                d-block
+                                                text-capitalize text-12
+                                                font-weight-600
+                                                text-blue text-truncate
+                                            "
+                                >
+                                            SDM: <%= client.assignee.first_name %> <%=client.assignee.last_name %>
+                                        </span>
+                            </td>
+                            <td>
+                                <!-- stages -->
+
+                                <span
+                                        :class="
+                                                'text-capitalize ' +
+                                                doStageType(
+                                                    lead.latest_activity_type,
+                                                    'cls'
+                                                )
+                                            ">
+                                           In Progress
+                                        </span>
+
+                                <span
+                                        class="
+                                                clickable
+                                                d-block
+                                                font-weight-500
+                                            "
+                                       >
+                                         Progress
+                                        </span>
+                            </td>
+                            <td>
+                                <span class="text-capitalize text-muted">
+                                        Not Started
+                                    </span></td>
+                            <td>
+                                <div class="d-flex flex-column">
+                                    <button
+                                            type="button"
+                                            class="
+                                                    btn btn-sm
+                                                    h-75
+                                                    text-body-size
+                                                    font-weight-400
+                                                    rounded-pill
+                                                    text-capitalize
+                                                    form-control-sm
+                                                    pl-3
+                                                    pr-3
+                                                    btn-outline-navy
+                                                    text-nowrap
+                                                "
+                                            @click.prevent="syncToCrm(lead.id)"
+                                            :disabled="syncing">
+                                        Sync to CRM
+                                        <span
+                                                v-if="syncing"
+                                                class="fa fa-spin fa-spinner"></span>
+                                    </button>
+                                    <button
+                                            v-if="filter.status=='active'"
+                                            type="button"
+                                            class="
+                                                    btn btn-sm
+                                                    h-75
+                                                    text-body-size
+                                                    font-weight-400
+                                                    rounded-pill
+                                                    text-capitalize
+                                                    form-control-sm
+                                                    pl-3
+                                                    pr-3
+                                                    btn-outline-danger
+                                                    text-nowrap
+                                                "
+                                            @click.prevent="
+                                                    deactivateLead(lead.id)
+                                                ">
+                                        Deactivate
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <% end %>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>

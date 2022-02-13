@@ -21,15 +21,15 @@ defmodule SalactivErpWeb.LeadController do
 
   def list(conn, _params) do
 
-    clients  = Repo.all(Client)
+    clients  = Repo.all(Client) |> Repo.preload([:country, :assignee, :assigneePartner])
     countries = Repo.all(Country)
 
     IO.puts "++++++++++"
     IO.inspect clients
     IO.puts "++++++++++"
 
-    render(conn, "create_lead.html", form_csrf_token: get_csrf_token(), countries: countries,
-           layout: {SalactivErpWeb.LayoutView, "inner.html"} )
+    render(conn, "list_lead.html", form_csrf_token: get_csrf_token(), countries: countries, clients: clients,
+           layout: { SalactivErpWeb.LayoutView, "inner.html"} )
   end
 
   def post_create(conn, params) do
@@ -53,7 +53,7 @@ defmodule SalactivErpWeb.LeadController do
                                     :assigned_to =>  1,
                                     :partner_id =>  1,
                                     :wallpost_lead_id =>  "PLererrlsdkk324",
-                                    :is_client =>  "0",
+                                    :is_client =>  0,
                                     :contact_first_name => params["contact_first_name"],
                                     :contact_last_name =>  params["contact_last_name"],
                                     :contact_email => params["company_email"],
@@ -71,7 +71,7 @@ defmodule SalactivErpWeb.LeadController do
       {:ok, _client} ->
         conn
         |> put_flash(:info, "Client created successfully.")
-        |> redirect(to:  Routes.lead_path(Endpoint,  :create ))
+        |> redirect(to:  Routes.lead_path(Endpoint,  :list ))
       {:error, _changeset} ->
         render(conn, "create_lead.html" , form_csrf_token: get_csrf_token() , countries: countries  ,  layout: {SalactivErpWeb.LayoutView, "inner.html"} )
     end

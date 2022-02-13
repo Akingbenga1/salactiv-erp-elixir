@@ -9,11 +9,8 @@ defmodule SalactivErp.Client.Client do
     field :company_name, :string
     field :company_email, :string
     field :company_phone, :string
-    field :country_id, :integer
     field :referred_by, :integer
     field :created_by, :integer
-    field :assigned_to, :integer
-    field :partner_id, :integer
     field :wallpost_lead_id, :string
     field :is_client, :integer
     field :company_address, :string
@@ -27,8 +24,12 @@ defmodule SalactivErp.Client.Client do
     field :longitude, :string
     field :location, :string
     field :package, :string
+    belongs_to :country, SalactivErp.Country.Country
+    belongs_to :assignee,  SalactivErp.Accounts.User, foreign_key: :assigned_to, references: :id
+    belongs_to :assigneePartner,  SalactivErp.Partner.Partner, foreign_key: :partner_id, references: :id
 
-    timestamps()
+
+                                                                        timestamps()
   end
 
 
