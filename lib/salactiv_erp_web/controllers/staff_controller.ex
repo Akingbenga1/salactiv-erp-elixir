@@ -1,21 +1,19 @@
-defmodule SalactivErpWeb.PageController do
+defmodule SalactivErpWeb.StaffController do
   use SalactivErpWeb, :controller
   alias SalactivErpWeb.Router.Helpers, as: Routes
   alias SalactivErpWeb.Endpoint
   alias SalactivErp.Accounts
   alias SalactivErpWeb.UserAuth
 
-  plug SalactivErpWeb.Plugs.RequireAuth when action in [:dashboard, :index]
-
-  plug SalactivErpWeb.Plugs.NotRequireAuth when action in [:login]
+  plug SalactivErpWeb.Plugs.RequireAuth when action in [:create_staff]
 
   def index(conn, _params) do
 #    render(conn, "index.html")
     render(conn, "dashboard.html" ,  layout: {SalactivErpWeb.LayoutView, "inner.html"} )
   end
 
-  def login(conn, _params) do
-    render conn, "login.html", form_csrf_token: get_csrf_token()
+  def create_staff(conn, _params) do
+    render(conn, "create_staff.html", form_csrf_token: get_csrf_token(),   layout: {SalactivErpWeb.LayoutView, "inner.html"} )
   end
 
   def signin(conn, params) do

@@ -1,0 +1,459 @@
+<div class="bg-body position-sticky top-0 wp_form">
+    <section class="p-30">
+        <!-- inner pages title -->
+        <div class="slide_head slide_head--dboard-left flex m-b-5 m-t--25">
+            <label
+                    class="d-block m-0 slide_head__title text-16 text-black-50"
+                    style=""
+            >Create Lead</label>
+        </div>
+        <!-- end inner pages title -->
+        <div class="panelbk height-full">
+            <form
+
+                    method="POST"
+                    action={Routes.lead_path(@conn, :post_create)}
+
+                    id="form-template"
+                    name="form-template">
+                <div class="mt-2" >
+                    <div class="row">
+                        <div class="col-sm-12" style="display: none;" >
+                            <div
+                                    class="
+                                        alert alert-danger
+                                        text-white
+                                        py-2
+                                        pr-0
+                                        rounded
+                                        font-bold
+                                        mb-4
+                                        shadow-lg
+                                    "
+                            >
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4">
+
+                    <div class="row">
+                        <input type="hidden" name="_csrf_token" value={@form_csrf_token} />
+                        <div class="col-md-6">
+                            <fieldset>
+                                <legend
+                                        class="
+                                            text-dashboard-title
+                                            font-weight-bold
+                                        "
+                                >
+                                    Company Details
+                                </legend>
+                                <div class="form-row">
+                                    <div class="col-12 mb-4">
+                                        <label for="company" class="">
+                                            Company name
+                                            <span class="required">*</span>
+                                        </label>
+                                        <input
+                                                required="required"
+                                                name="company_name"
+                                                v-model="form.company_name"
+                                                type="text"
+                                                class="form-control"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-12 col-lg-6 mb-4">
+                                        <label
+                                                for="validationCustom02"
+                                                class="
+                                                    form-labels
+                                                    text-capitalize
+                                                "
+                                        >
+                                            contact - first name
+                                            <span class="required">*</span>
+                                        </label>
+                                        <div class="input-group">
+                                            <div
+                                                    class="input-group-prepend"
+                                            >
+                                                <div
+                                                        class="
+                                                            bg-transparent
+                                                            border-0
+                                                            mr--5
+                                                            z-index-4
+                                                        "
+                                                >
+                                                    <select
+                                                            v-model="
+                                                                form.prefix_name
+                                                            "
+                                                            id="user_title"
+                                                            name="prefix_name"
+                                                            class="
+                                                                form-control
+                                                                p-2
+                                                            "
+                                                    >
+                                                        <option>Mr</option>
+                                                        <option>Mrs</option>
+                                                        <option>Ms</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <input
+                                                    required="required"
+                                                    type="text"
+                                                    placeholder="First Name"
+                                                    v-model="
+                                                        form.contact_first_name
+                                                    "
+                                                    name="contact_first_name"
+                                                    class="form-control pl-5"
+                                            />
+                                            <div class="invalid-feedback">
+                                                first name is required.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-6 mb-4">
+                                        <label
+                                                for="validationCustomUsername"
+                                                class="
+                                                    form-labels
+                                                    text-capitalize
+                                                "
+                                        >
+                                            contact - last name
+                                            <span class="required">*</span>
+                                        </label>
+                                        <input
+                                                required="required"
+                                                placeholder="Last Name"
+                                                name="contact_last_name"
+                                                type="text"
+                                                v-model="form.contact_last_name"
+                                                class="form-control"
+                                        />
+                                        <div class="invalid-feedback">
+                                            last name is required.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-12 col-lg-6 mb-1">
+                                        <label
+                                                for="validationCustom02"
+                                                class="
+                                                    form-labels
+                                                    text-capitalize
+                                                "
+                                        >
+                                            contact - email address
+                                            <span class="required">*</span>
+                                        </label>
+                                        <input
+                                                placeholder="Email"
+                                                v-model="form.company_email"
+                                                name="company_email"
+                                                type="email"
+                                                class="form-control"
+                                                @keyup="invalidFormat()"
+                                        />
+                                        <div
+                                                class="invalid-feedback"
+                                                :class="
+                                                    error.email ? 'show' : ''
+                                                "
+                                        >
+                                            Valid email address is required.
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-6 mb-1">
+                                        <label
+                                                for="validationCustom02"
+                                                class="
+                                                    form-labels
+                                                    text-capitalize
+                                                "
+                                        >
+                                            contact - phone number
+                                            <span class="required">*</span>
+                                        </label>
+
+                                        <input
+                                                name="company_phone"
+                                                type="text"
+                                                required
+                                                class="form-control"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="form-row mt-3">
+                                    <div class="col-12 col-lg-6 mb-4">
+                                        <div class="">
+                                            <label
+                                                    for="package_name_field"
+                                                    class=""
+                                            >
+                                                Select Package/Module
+                                                <span
+                                                        class="required"
+                                                        v-if="
+                                                            form.type_of_lead ==
+                                                            'Paid'">*</span>
+                                            </label>
+                                            <br />
+                                            <select
+                                                    v-model="
+                                                        filter.package_choices
+                                                    "
+                                                    class="
+                                                        border-2
+                                                        col-12
+                                                        form-control
+                                                        text-body
+                                                        text-capitalize
+                                                    "
+                                                    id="package_name_field"
+                                                    @change="getPackages"
+                                                    name="packages"
+                                            >
+                                                <option value="">
+                                                    Please Select
+                                                </option>
+                                                <option value="packages">
+                                                    Packages
+                                                </option>
+                                                <option value="stand alone">
+                                                    Stand Alone
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="col-sm-6">
+                            <fieldset>
+                                <legend
+                                        class="
+                                            text-dashboard-title
+                                            font-weight-bold
+                                        "
+                                >
+                                    Address Details
+                                </legend>
+                                <div class="row">
+                                    <div class="col-12 col-lg-6">
+                                        <div class="form-row mb-4">
+                                            <div class="col-12">
+                                                <label
+                                                        for="location"
+                                                        class="
+                                                            form-labels
+                                                            text-capitalize
+                                                        ">
+                                                    company location
+                                                    <span class="required">*</span>
+                                                </label>
+                                                <div
+                                                        class="
+                                                            input-group
+                                                            m-0
+                                                            p-0
+                                                        "
+                                                >
+
+                                                    <input
+                                                            type="text"
+                                                            required
+                                                            name="location"
+                                                            class="form-control"
+                                                    />
+                                                    <div
+                                                            class="
+                                                                invalid-feedback
+                                                            "
+                                                    >
+                                                        location is
+                                                        required.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row mb-4">
+                                            <div class="col-12">
+                                                <label
+                                                        for="validationCustom04"
+                                                        class="
+                                                            form-labels
+                                                            text-capitalize
+                                                        ">
+                                                    city
+                                                    <span class="required">*</span>
+                                                </label>
+                                                <input
+                                                        required="required"
+                                                        placeholder="City"
+                                                        name="company_city"
+                                                        v-model="
+                                                            form.company_city
+                                                        "
+                                                        type="text"
+                                                        class="form-control"
+                                                />
+                                                <div
+                                                        class="invalid-feedback"
+                                                >
+                                                    city is required.
+                                                </div>
+                                            </div>
+                                            <div class="col-12" style="margin-top: 20px">
+                                                <label
+                                                        for="validationCustom04"
+                                                        class="
+                                                            form-labels
+                                                            text-capitalize
+                                                        ">
+                                                    Country
+                                                    <span class="required">*</span>
+                                                </label>
+                                                <select
+                                                        class="
+                                                        border-2
+                                                        col-12
+                                                        form-control
+                                                        text-body
+                                                        text-capitalize
+                                                    "
+                                                        name="country"
+                                                >
+                                                    <option value="">Please Select</option>
+                                                    <%= for country <- @countries do %>
+                                                    <option value={ country.id}>
+                                                        <%= country.name %>
+                                                    </option>
+                                                    <% end %>
+                                                </select>
+                                                <div
+                                                        class="invalid-feedback"
+                                                >
+                                                    city is required.
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row mb-4">
+                                        </div>
+                                        <div class="form-row mb-4">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-6 mb-4">
+                                        <div class="form-row mb-4">
+                                            <div class="col-12">
+                                                <label
+                                                        for="validationCustom04"
+                                                        class="
+                                                            form-labels
+                                                            text-capitalize">street</label>
+                                                <input
+                                                        v-model="
+                                                            form.company_address
+                                                        "
+                                                        name="company_address"
+                                                        type="text"
+                                                        class="form-control"
+                                                />
+                                                <div
+                                                        class="invalid-feedback"
+                                                >
+                                                    street is required.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-row mb-4">
+                                            <div class="col-12">
+                                                <label
+                                                        for="validationCustom04"
+                                                        class="
+                                                            form-labels
+                                                            text-capitalize">zip code</label>
+                                                <input
+                                                        v-model="form.zipcode"
+                                                        type="text"
+                                                        id="validationCustom04"
+                                                        placeholder="zip code"
+                                                        name="zipcode"
+                                                        class="form-control"
+                                                />
+                                                <div
+                                                        class="invalid-feedback"
+                                                >
+                                                    zip code is required.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-row mb-4">
+                                            <div class="col-12">
+                                                <label
+                                                        for="validationCustom04"
+                                                        class="
+                                                            form-labels
+                                                            text-capitalize
+                                                        ">State</label>
+                                                <input
+                                                        v-model="form.state"
+                                                        placeholder="State"
+                                                        name="state"
+                                                        type="text"
+                                                        class="form-control"
+                                                />
+                                                <div
+                                                        class="invalid-feedback"
+                                                >
+                                                    State is required.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-row mb-4">
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <!-- Confirmation Order Upload -->
+                    </div>
+
+                </div>
+
+                <div class="border-top mt-3 modal-footer pl-0 pr-0 pb-0">
+                    <a
+                            href="/"
+                            type="button"
+                            form="lead_create_form"
+                            class="border-2 btn btn-sm rounded-pill text-gray"
+                    >
+                        <i class="fa-times fas mr-2"></i> Cancel
+                    </a>
+                    <button
+                            @click.prevent="sentLead()"
+                            type="submit"
+                            class="btn btn-sm btn-slack rounded-pill"
+                            :disabled="sending"
+                    >
+                            <span class="btn-inner--icon">
+                                <i class="d-inline fa-check fas mr-2"></i>Create
+                            </span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+</div>

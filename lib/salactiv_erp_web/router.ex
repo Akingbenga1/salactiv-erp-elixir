@@ -21,7 +21,7 @@ defmodule SalactivErpWeb.Router do
   scope "/", SalactivErpWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    get "", PageController, :index
     get "/login", PageController, :login
     post "/login", PageController, :signin
     get "/dashboard", PageController, :dashboard
@@ -34,6 +34,14 @@ defmodule SalactivErpWeb.Router do
     get "/list", LeadController, :list
     get "/create", LeadController, :create
     post "/create", LeadController, :post_create
+  end
+
+  scope "/staff", SalactivErpWeb do
+    pipe_through :browser # Use the default browser stacks
+
+    get "/list", StaffController, :list_staff
+    get "/create", StaffController, :create_staff
+    post "/create", StaffController, :post_staff
   end
 
   # Other scopes may use custom stacks.
